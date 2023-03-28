@@ -40,44 +40,43 @@ body {
 .calc-wrapper .buttons {
   border-radius: 12px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(25px, 100px));
+  grid-template-rows: repeat(5, minmax(25px, 55px));
+  gap: 1.5rem;
   padding: 2rem;
   background-color: hsl(223, 31%, 20%);
-  gap: 1.5rem;
 }
 .calc-wrapper .buttons > button {
-  width: 100px;
-  padding: 1rem 0;
   border-radius: 12px;
   border: none;
   cursor: pointer;
-  font-size: 32px;
+  font-size: 36px;
 }
 .calc-wrapper .buttons > button[data-number], .calc-wrapper .buttons button[data-operator] {
   color: hsl(221, 14%, 31%);
   background-color: hsl(30, 25%, 89%);
-  -webkit-box-shadow: 0px 6px 0px 0px hsl(28, 16%, 65%);
-  -moz-box-shadow: 0px 6px 0px 0px hsl(28, 16%, 65%);
-  box-shadow: 0px 6px 0px 0px hsl(28, 16%, 65%);
+  -webkit-box-shadow: 0px 4px 0px 0px hsl(28, 16%, 65%);
+  -moz-box-shadow: 0px 4px 0px 0px hsl(28, 16%, 65%);
+  box-shadow: 0px 4px 0px 0px hsl(28, 16%, 65%);
 }
 .calc-wrapper .buttons > button[data-number]:hover, .calc-wrapper .buttons button[data-operator]:hover {
   background-color: hsl(0, 0%, 100%);
 }
 .calc-wrapper .buttons > button:not([data-number], [data-operator]) {
-  font-size: 28px;
+  font-size: 24px;
   color: hsl(0, 0%, 100%);
 }
 .calc-wrapper .buttons > button[data-delete], .calc-wrapper .buttons button[data-reset] {
   background-color: hsl(225, 21%, 49%);
-  -webkit-box-shadow: 0px 6px 0px 0px hsl(224, 28%, 35%);
-  -moz-box-shadow: 0px 6px 0px 0px hsl(224, 28%, 35%);
-  box-shadow: 0px 6px 0px 0px hsl(224, 28%, 35%);
+  -webkit-box-shadow: 0px 4px 0px 0px hsl(224, 28%, 35%);
+  -moz-box-shadow: 0px 4px 0px 0px hsl(224, 28%, 35%);
+  box-shadow: 0px 4px 0px 0px hsl(224, 28%, 35%);
 }
 .calc-wrapper .buttons > button[data-equals] {
   background-color: hsl(6, 63%, 50%);
-  -webkit-box-shadow: 0px 6px 0px 0px hsl(6, 70%, 34%);
-  -moz-box-shadow: 0px 6px 0px 0px hsl(6, 70%, 34%);
-  box-shadow: 0px 6px 0px 0px hsl(6, 70%, 34%);
+  -webkit-box-shadow: 0px 4px 0px 0px hsl(6, 70%, 34%);
+  -moz-box-shadow: 0px 4px 0px 0px hsl(6, 70%, 34%);
+  box-shadow: 0px 4px 0px 0px hsl(6, 70%, 34%);
 }
 .calc-wrapper .buttons .span-two {
   grid-column: span 2;

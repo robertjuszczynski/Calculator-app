@@ -1,109 +1,106 @@
-@use "sass:map";
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap');
-$Theme-one: (
+//First-Theme
     //Backgrounds
-    "very-dark-desaturated-blue (mainbackground)": hsl(222, 26%, 31%),
-    "very-dark-desaturated (toggle background, keypad background)": hsl(223, 31%, 20%),
-    "very dark desaturated blue (screen background)": hsl(224, 36%, 15%),
+    $very-dark-desaturated-blue: hsl(222, 26%, 31%);
+    $very-dark-desaturated: hsl(223, 31%, 20%);
+    $very-dark-desaturated-blue-screen: hsl(224, 36%, 15%);
     //Keys
-    "Desaturated dark blue (key background)": hsl(225, 21%, 49%),
-    "Desaturated dark blue (key shadow)": hsl(224, 28%, 35%),
-    "Red (key background, toggle)": hsl(6, 63%, 50%),
-    "Dark red (key shadow)": hsl(6, 70%, 34%),
-    "Light grayish orange (key background)": hsl(30, 25%, 89%),
-    "Grayish orange (key shadow)": hsl(28, 16%, 65%),
+    $desaturated-dark-blue-key: hsl(225, 21%, 49%);
+    $desaturated-dark-blue-shadow: hsl(224, 28%, 35%);
+    $red-key-toggle: hsl(6, 63%, 50%);
+    $dark-red-shadow: hsl(6, 70%, 34%);
+    $light-grayish-orange-key: hsl(30, 25%, 89%);
+    $grayish-orange-shadow: hsl(28, 16%, 65%);
     //Text
-    "Very dark grayish blue": hsl(221, 14%, 31%),
-    "White": hsl(0, 0%, 100%)
-);
+    $very-dark-grayish-blue: hsl(221, 14%, 31%);
+    $white: hsl(0, 0%, 100%);
 
-*,
-* > * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'League Spartan', sans-serif;
-}
-body {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1.5rem;
-    background-color: map-get($map: $Theme-one, $key: "very-dark-desaturated-blue (mainbackground)");
-}
-.calc-wrapper {
-    color: map-get($map: $Theme-one, $key: "White");
-    .top-section {
-        display: flex;
-        justify-content: space-between;
-        .logo {
-            font-size: 32px;
-        }
-        .themes {
-            >label {
-
-            }
-            >input {
-
-            }
-        }
+    *,
+    * > * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'League Spartan', sans-serif;
     }
-    .output {
+    body {
+        min-height: 100vh;
         display: flex;
+        justify-content: center;
         align-items: center;
-        justify-content: flex-end;
-        border-radius: 12px;
-        margin: 2rem 0 1.5rem 0;
-        font-size: 68px;
-        color: map-get($map: $Theme-one, $key: "White");
-        padding: 2rem;
-        background-color: map-get($map: $Theme-one, $key: "very dark desaturated blue (screen background)");
+        padding: 1.5rem;
+        background-color: $very-dark-desaturated-blue;
     }
-    .buttons {
-        border-radius: 12px;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        padding: 2rem;
-        background-color: map-get($map: $Theme-one, $key: "very-dark-desaturated (toggle background, keypad background)");
-        gap: 1.5rem;
-        >button {
-            width: clamp(25px,100px,125px);
-            padding: 1rem 0;
-            border-radius: 12px;
-            border: none;
-            cursor: pointer;
-            font-size: 32px;
-        }
-        >button[data-number], button[data-operator] {
-            color: map-get($map: $Theme-one, $key: "Very dark grayish blue");
-            background-color: map-get($map: $Theme-one, $key: "Light grayish orange (key background)");
-            -webkit-box-shadow: 0px 6px 0px 0px map-get($map: $Theme-one, $key: "Grayish orange (key shadow)");
-            -moz-box-shadow: 0px 6px 0px 0px map-get($map: $Theme-one, $key: "Grayish orange (key shadow)");
-            box-shadow: 0px 6px 0px 0px map-get($map: $Theme-one, $key: "Grayish orange (key shadow)");
-            &:hover {
-                background-color: map-get($map: $Theme-one, $key: "White");
+    .calc-wrapper {
+        color: $white;
+        .top-section {
+            display: flex;
+            justify-content: space-between;
+            .logo {
+                font-size: 32px;
+            }
+            .themes {
+                >label {
+    
+                }
+                >input {
+    
+                }
             }
         }
-        >button:not([data-number],[data-operator]) {
-            font-size: 28px;
-            color: map-get($map: $Theme-one, $key: "White");
+        .output {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            border-radius: 12px;
+            margin: 2rem 0 1.5rem 0;
+            font-size: 68px;
+            color: $white;
+            padding: 2rem;
+            background-color: $very-dark-desaturated-blue-screen;
         }
-        >button[data-delete], button[data-reset] {
-            background-color: map-get($map: $Theme-one, $key: "Desaturated dark blue (key background)");
-            -webkit-box-shadow: 0px 6px 0px 0px map-get($map: $Theme-one, $key: "Desaturated dark blue (key shadow)");
-            -moz-box-shadow: 0px 6px 0px 0px map-get($map: $Theme-one, $key: "Desaturated dark blue (key shadow)");
-            box-shadow: 0px 6px 0px 0px map-get($map: $Theme-one, $key: "Desaturated dark blue (key shadow)");
-        }
-        >button[data-equals] {
-            background-color: map-get($map: $Theme-one, $key: "Red (key background, toggle)");
-            -webkit-box-shadow: 0px 6px 0px 0px map-get($map: $Theme-one, $key: "Dark red (key shadow)");
-            -moz-box-shadow: 0px 6px 0px 0px map-get($map: $Theme-one, $key: "Dark red (key shadow)");
-            box-shadow: 0px 6px 0px 0px map-get($map: $Theme-one, $key: "Dark red (key shadow)");
-        }
-        .span-two {
-            grid-column: span 2;
-            width: unset;
+        .buttons {
+            border-radius: 12px;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(25px,100px));
+            grid-template-rows: repeat(5, minmax(25px,55px));
+            gap: 1.5rem;
+            padding: 2rem;
+            background-color: $very-dark-desaturated;
+            >button {
+                border-radius: 12px;
+                border: none;
+                cursor: pointer;
+                font-size: 36px;
+            }
+            >button[data-number], button[data-operator] {
+                color: $very-dark-grayish-blue;
+                background-color: $light-grayish-orange-key;
+                -webkit-box-shadow: 0px 4px 0px 0px $grayish-orange-shadow;
+                -moz-box-shadow: 0px 4px 0px 0px $grayish-orange-shadow;
+                box-shadow: 0px 4px 0px 0px $grayish-orange-shadow;
+                &:hover {
+                    background-color: $white;
+                }
+            }
+            >button:not([data-number],[data-operator]) {
+                font-size: 24px;
+                color: $white;
+            }
+            >button[data-delete], button[data-reset] {
+                background-color: $desaturated-dark-blue-key;
+                -webkit-box-shadow: 0px 4px 0px 0px $desaturated-dark-blue-shadow;
+                -moz-box-shadow: 0px 4px 0px 0px $desaturated-dark-blue-shadow;
+                box-shadow: 0px 4px 0px 0px $desaturated-dark-blue-shadow;
+            }
+            >button[data-equals] {
+                background-color: $red-key-toggle;
+                -webkit-box-shadow: 0px 4px 0px 0px $dark-red-shadow;
+                -moz-box-shadow: 0px 4px 0px 0px $dark-red-shadow;
+                box-shadow: 0px 4px 0px 0px $dark-red-shadow;
+            }
+            .span-two {
+                grid-column: span 2;
+                width: unset;
+            }
         }
     }
-}
