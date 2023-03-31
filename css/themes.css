@@ -13,6 +13,7 @@ html[data-theme=default] {
   --buttons: hsl(221, 14%, 31%);
   --top-section-color: hsl(0, 0%, 100%);
   --keyboard-color: hsl(223, 31%, 20%);
+  --active-buttons-bg:hsl(0, 0%, 100%);
 }
 
 html[data-theme=light] {
@@ -30,6 +31,7 @@ html[data-theme=light] {
   --buttons: hsl(60, 10%, 19%);
   --top-section-color: hsl(60, 10%, 19%);
   --keyboard-color: hsl(60, 10%, 19%);
+  --active-buttons-bg:hsl(0, 0%, 100%);
 }
 
 html[data-theme=violet] {
@@ -47,4 +49,5 @@ html[data-theme=violet] {
   --buttons: hsl(52, 100%, 62%);
   --top-section-color: hsl(52, 100%, 62%);
   --keyboard-color: hsl(52, 100%, 62%);
+  --active-buttons-bg:hsl(268, 54%, 44%);
 }/*# sourceMappingURL=themes.css.map */
