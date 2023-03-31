@@ -4,10 +4,12 @@ const inputs = document.querySelectorAll("input");
 // A script to save themes to the browser's local storage
 function loadTheme() {
   const theme = localStorage.getItem("data-theme");
-  if (theme) html.setAttribute("data-theme", theme);
-  inputs.forEach((input) => {
-    input.checked = input.getAttribute("id") === theme;
-  });
+  if (theme) {
+    html.setAttribute("data-theme", theme);
+    inputs.forEach((input) => {
+      input.checked = input.getAttribute("id") === theme;
+    });
+  }
 }
 inputs.forEach((input) => {
   input.addEventListener("click", () => {
