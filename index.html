@@ -1,29 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="default">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- displays site properly based on user's device -->
   <link rel="stylesheet" href="./css/style.css">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-
   <title>Frontend Mentor | Calculator app</title>
-
 </head>
-
 <body>
   <main class="calc-wrapper">
     <header class="top-section">
       <div class="logo">calc</div>
       <div class="themes">
-        <p>Theme</p>
-        <label for="first-theme">1</label>
-        <input id="first-theme" type="radio" name="theme" checked>
-        <label for="second-theme">2</label>
-        <input id="second-theme" type="radio" name="theme">
-        <label for="third-theme">3</label>
-        <input id="third-theme" type="radio" name="theme">
+        <div class="themes-selection">
+          <div class="labels">
+            <label for="default">1</label>
+            <label for="light">2</label>
+            <label for="violet">3</label>
+          </div>
+          <div class="inputs">
+            <p>THEME</p>
+            <input id="default" type="radio" name="theme" checked>
+            <input id="light" type="radio" name="theme">
+            <input id="violet" type="radio" name="theme">
+          </div>  
+        </div>
       </div>
     </header>
     <div class="output">0</div>
@@ -48,7 +50,7 @@
       <button class="span-two" data-equals>=</button>
     </div>
   </main>
-  <script src="./script.js"></script>
+  <script src="./js/script.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,60 @@
+//First-theme
+html[data-theme="default"] {
+  //bgs
+  --main-bg: hsl(222, 26%, 31%);
+  --inputs-bg-keypad-bg: hsl(223, 31%, 20%);
+  --output-bg: hsl(224, 36%, 15%);
+  //Keys
+  --key-bg-one: hsl(225, 21%, 49%);
+  --key-shadow-one: hsl(224, 28%, 35%);
+  --key-bg-toggle-two: hsl(6, 63%, 50%);
+  --key-shadow-two: hsl(6, 70%, 34%);
+  --key-bg-three: hsl(30, 25%, 89%);
+  --key-shadow-three: hsl(28, 16%, 65%);
+  //Text
+  --white: hsl(0, 0%, 100%);
+  --equals: hsl(0, 0%, 100%);
+  --buttons: hsl(221, 14%, 31%);
+  --top-section-color: hsl(0, 0%, 100%);
+  --keyboard-color: hsl(223, 31%, 20%);
+}
+//Second-theme
+html[data-theme="light"] {
+  //bgs
+  --main-bg: hsl(0, 0%, 90%);
+  --inputs-bg-keypad-bg: hsl(0, 5%, 81%);
+  --output-bg: hsl(0, 0%, 93%);
+  //Keys
+  --key-bg-one: hsl(185, 42%, 37%);
+  --key-shadow-one: hsl(185, 58%, 25%);
+  --key-bg-toggle-two: hsl(25, 98%, 40%);
+  --key-shadow-two: hsl(25, 99%, 27%);
+  --key-bg-three: hsl(45, 7%, 89%);
+  --key-shadow-three: hsl(35, 11%, 61%);
+  //Text
+  --white: hsl(0, 0%, 100%);
+  --equals: hsl(0, 0%, 100%);
+  --buttons: hsl(60, 10%, 19%);
+  --top-section-color: hsl(60, 10%, 19%);
+  --keyboard-color: hsl(60, 10%, 19%);
+}
+//Third-theme
+html[data-theme="violet"] {
+  //bgs
+  --main-bg: hsl(268, 75%, 9%);
+  --inputs-bg-keypad-bg: hsl(268, 71%, 12%);
+  --output-bg: hsl(268, 71%, 12%);
+  //Keys
+  --key-bg-one: hsl(281, 89%, 26%);
+  --key-shadow-one: hsl(285, 91%, 52%);
+  --key-bg-toggle-two: hsl(176, 100%, 44%);
+  --key-shadow-two: hsl(177, 92%, 70%);
+  --key-bg-three: hsl(268, 47%, 21%);
+  --key-shadow-three: hsl(290, 70%, 36%);
+  //Text
+  --white: hsl(0, 0%, 100%);
+  --equals: hsl(268, 71%, 12%);
+  --buttons: hsl(52, 100%, 62%);
+  --top-section-color: hsl(52, 100%, 62%);
+  --keyboard-color: hsl(52, 100%, 62%);
+}

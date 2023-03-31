@@ -1,4 +1,55 @@
 @import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap");
+html[data-theme=default] {
+  --main-bg: hsl(222, 26%, 31%);
+  --inputs-bg-keypad-bg: hsl(223, 31%, 20%);
+  --output-bg: hsl(224, 36%, 15%);
+  --key-bg-one: hsl(225, 21%, 49%);
+  --key-shadow-one: hsl(224, 28%, 35%);
+  --key-bg-toggle-two: hsl(6, 63%, 50%);
+  --key-shadow-two: hsl(6, 70%, 34%);
+  --key-bg-three: hsl(30, 25%, 89%);
+  --key-shadow-three: hsl(28, 16%, 65%);
+  --white: hsl(0, 0%, 100%);
+  --equals: hsl(0, 0%, 100%);
+  --buttons: hsl(221, 14%, 31%);
+  --top-section-color: hsl(0, 0%, 100%);
+  --keyboard-color: hsl(223, 31%, 20%);
+}
+
+html[data-theme=light] {
+  --main-bg: hsl(0, 0%, 90%);
+  --inputs-bg-keypad-bg: hsl(0, 5%, 81%);
+  --output-bg: hsl(0, 0%, 93%);
+  --key-bg-one: hsl(185, 42%, 37%);
+  --key-shadow-one: hsl(185, 58%, 25%);
+  --key-bg-toggle-two: hsl(25, 98%, 40%);
+  --key-shadow-two: hsl(25, 99%, 27%);
+  --key-bg-three: hsl(45, 7%, 89%);
+  --key-shadow-three: hsl(35, 11%, 61%);
+  --white: hsl(0, 0%, 100%);
+  --equals: hsl(0, 0%, 100%);
+  --buttons: hsl(60, 10%, 19%);
+  --top-section-color: hsl(60, 10%, 19%);
+  --keyboard-color: hsl(60, 10%, 19%);
+}
+
+html[data-theme=violet] {
+  --main-bg: hsl(268, 75%, 9%);
+  --inputs-bg-keypad-bg: hsl(268, 71%, 12%);
+  --output-bg: hsl(268, 71%, 12%);
+  --key-bg-one: hsl(281, 89%, 26%);
+  --key-shadow-one: hsl(285, 91%, 52%);
+  --key-bg-toggle-two: hsl(176, 100%, 44%);
+  --key-shadow-two: hsl(177, 92%, 70%);
+  --key-bg-three: hsl(268, 47%, 21%);
+  --key-shadow-three: hsl(290, 70%, 36%);
+  --white: hsl(0, 0%, 100%);
+  --equals: hsl(268, 71%, 12%);
+  --buttons: hsl(52, 100%, 62%);
+  --top-section-color: hsl(52, 100%, 62%);
+  --keyboard-color: hsl(52, 100%, 62%);
+}
+
 *,
 * > * {
   margin: 0;
@@ -8,77 +59,142 @@
 }
 
 body {
-  min-height: 100vh;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
   padding: 1.5rem;
-  background-color: hsl(222, 26%, 31%);
+  background-color: var(--main-bg);
 }
-
-.calc-wrapper {
-  color: hsl(0, 0%, 100%);
-}
-.calc-wrapper .top-section {
+body .calc-wrapper .top-section {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: flex-end;
+  color: var(--top-section-color);
 }
-.calc-wrapper .top-section .logo {
+body .calc-wrapper .top-section .logo {
   font-size: 32px;
 }
-.calc-wrapper .output {
+body .calc-wrapper .top-section .themes {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 1.5rem;
+}
+body .calc-wrapper .top-section .themes .themes-selection {
+  width: 75px;
+}
+body .calc-wrapper .top-section .themes .themes-selection .labels {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  line-height: 1.8;
+  padding: 0 2px;
+  font-size: 12px;
+}
+body .calc-wrapper .top-section .themes .themes-selection .inputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
   align-items: center;
+  position: relative;
+  height: 28px;
+  border-radius: 20px;
+  background-color: var(--inputs-bg-keypad-bg);
+}
+body .calc-wrapper .top-section .themes .themes-selection .inputs p {
+  position: absolute;
+  left: -75px;
+  letter-spacing: 1.5px;
+  font-size: 12px;
+}
+body .calc-wrapper .top-section .themes .themes-selection .inputs input {
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+body .calc-wrapper .top-section .themes .themes-selection .inputs input:checked {
+  background-color: var(--key-bg-toggle-two);
+}
+body .calc-wrapper .output {
+  display: flex;
+  flex-direction: row;
   justify-content: flex-end;
+  align-items: center;
   border-radius: 12px;
   margin: 2rem 0 1.5rem 0;
-  font-size: 68px;
-  color: hsl(0, 0%, 100%);
-  padding: 2rem;
-  background-color: hsl(224, 36%, 15%);
+  font-size: clamp(3.625rem, 3.4049rem + 0.939vw, 4.25rem);
+  padding: 2.25rem 2rem 1.75rem 2rem;
+  color: var(--top-section-color);
+  background-color: var(--output-bg);
 }
-.calc-wrapper .buttons {
+body .calc-wrapper .buttons {
   border-radius: 12px;
   display: grid;
   grid-template-columns: repeat(4, minmax(25px, 100px));
-  grid-template-rows: repeat(5, minmax(25px, 55px));
+  grid-template-rows: repeat(5, minmax(25px, 60px));
   gap: 1.5rem;
   padding: 2rem;
-  background-color: hsl(223, 31%, 20%);
+  background-color: var(--inputs-bg-keypad-bg);
 }
-.calc-wrapper .buttons > button {
+body .calc-wrapper .buttons button {
   border-radius: 12px;
   border: none;
   cursor: pointer;
-  font-size: 36px;
+  font-size: clamp(1.875rem, 1.743rem + 0.5634vw, 2.25rem);
 }
-.calc-wrapper .buttons > button[data-number], .calc-wrapper .buttons button[data-operator] {
-  color: hsl(221, 14%, 31%);
-  background-color: hsl(30, 25%, 89%);
-  -webkit-box-shadow: 0px 4px 0px 0px hsl(28, 16%, 65%);
-  -moz-box-shadow: 0px 4px 0px 0px hsl(28, 16%, 65%);
-  box-shadow: 0px 4px 0px 0px hsl(28, 16%, 65%);
+body .calc-wrapper .buttons button[data-number],
+body .calc-wrapper .buttons button[data-operator] {
+  color: var(--buttons);
+  background-color: var(--key-bg-three);
+  -webkit-box-shadow: 0px 4px 0px 0px var(--key-shadow-three);
+  -moz-box-shadow: 0px 4px 0px 0px var(--key-shadow-three);
+  box-shadow: 0px 4px 0px 0px var(--key-shadow-three);
 }
-.calc-wrapper .buttons > button[data-number]:hover, .calc-wrapper .buttons button[data-operator]:hover {
-  background-color: hsl(0, 0%, 100%);
+body .calc-wrapper .buttons button[data-number]:hover,
+body .calc-wrapper .buttons button[data-operator]:hover {
+  background-color: var(--white);
 }
-.calc-wrapper .buttons > button:not([data-number], [data-operator]) {
-  font-size: 24px;
-  color: hsl(0, 0%, 100%);
+body .calc-wrapper .buttons button:not([data-number], [data-operator]) {
+  font-size: clamp(1.1875rem, 1.0775rem + 0.4695vw, 1.5rem);
+  color: var(--white);
 }
-.calc-wrapper .buttons > button[data-delete], .calc-wrapper .buttons button[data-reset] {
-  background-color: hsl(225, 21%, 49%);
-  -webkit-box-shadow: 0px 4px 0px 0px hsl(224, 28%, 35%);
-  -moz-box-shadow: 0px 4px 0px 0px hsl(224, 28%, 35%);
-  box-shadow: 0px 4px 0px 0px hsl(224, 28%, 35%);
+body .calc-wrapper .buttons button[data-delete],
+body .calc-wrapper .buttons button[data-reset] {
+  background-color: var(--key-bg-one);
+  -webkit-box-shadow: 0px 4px 0px 0px var(--key-shadow-one);
+  -moz-box-shadow: 0px 4px 0px 0px var(--key-shadow-one);
+  box-shadow: 0px 4px 0px 0px var(--key-shadow-one);
 }
-.calc-wrapper .buttons > button[data-equals] {
-  background-color: hsl(6, 63%, 50%);
-  -webkit-box-shadow: 0px 4px 0px 0px hsl(6, 70%, 34%);
-  -moz-box-shadow: 0px 4px 0px 0px hsl(6, 70%, 34%);
-  box-shadow: 0px 4px 0px 0px hsl(6, 70%, 34%);
+body .calc-wrapper .buttons button[data-equals] {
+  color: var(--equals);
+  background-color: var(--key-bg-toggle-two);
+  -webkit-box-shadow: 0px 4px 0px 0px var(--key-shadow-two);
+  -moz-box-shadow: 0px 4px 0px 0px var(--key-shadow-two);
+  box-shadow: 0px 4px 0px 0px var(--key-shadow-two);
 }
-.calc-wrapper .buttons .span-two {
+body .calc-wrapper .buttons .span-two {
   grid-column: span 2;
   width: unset;
+}
+
+@media only screen and (max-width: 600px) {
+  body .calc-wrapper .top-section .themes {
+    gap: 1.5rem;
+  }
+  body .calc-wrapper .output {
+    padding: 1.5rem 1.5rem 0.75rem 1.5rem;
+  }
+  body .calc-wrapper .buttons {
+    gap: 1rem 0.75rem;
+    padding: 1.25rem;
+  }
+  body .calc-wrapper .buttons button {
+    border-radius: 4px;
+  }
 }/*# sourceMappingURL=style.css.map */

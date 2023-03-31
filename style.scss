@@ -1,106 +1,181 @@
-@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap');
-//First-Theme
-    //Backgrounds
-    $very-dark-desaturated-blue: hsl(222, 26%, 31%);
-    $very-dark-desaturated: hsl(223, 31%, 20%);
-    $very-dark-desaturated-blue-screen: hsl(224, 36%, 15%);
-    //Keys
-    $desaturated-dark-blue-key: hsl(225, 21%, 49%);
-    $desaturated-dark-blue-shadow: hsl(224, 28%, 35%);
-    $red-key-toggle: hsl(6, 63%, 50%);
-    $dark-red-shadow: hsl(6, 70%, 34%);
-    $light-grayish-orange-key: hsl(30, 25%, 89%);
-    $grayish-orange-shadow: hsl(28, 16%, 65%);
-    //Text
-    $very-dark-grayish-blue: hsl(221, 14%, 31%);
-    $white: hsl(0, 0%, 100%);
+@import 'themes';
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap");
+@mixin flexbox(
+  $display: flex,
+  $direction: row,
+  $placeContent: null,
+  $placeItems: null,
+  $wrap: null,
+  $shrink: null,
+  $grow: null,
+  $alignContent: null,
+  $justifyContent: null,
+  $alignItems: null,
+  $justifyItems: null
+) {
+  display: $display;
+  flex-direction: $direction;
 
-    *,
-    * > * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'League Spartan', sans-serif;
+  @if $placeContent == null {
+    @if $alignContent {
+      align-content: $alignContent;
     }
-    body {
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 1.5rem;
-        background-color: $very-dark-desaturated-blue;
+    @if $justifyContent {
+      justify-content: $justifyContent;
     }
+  } @else {
+    place-content: $placeContent;
+  }
+
+  @if $placeItems == null {
+    @if $alignItems {
+      align-items: $alignItems;
+    }
+    @if $justifyItems {
+      justify-items: $justifyItems;
+    }
+  } @else {
+    place-items: $placeItems;
+  }
+
+  flex-wrap: $wrap;
+  flex-shrink: $shrink;
+  flex-grow: $grow;
+}
+
+*,
+* > * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "League Spartan", sans-serif;
+}
+body {
+  @include flexbox($alignItems: center, $justifyContent: center);
+  min-height: 100vh;
+  padding: 1.5rem;
+  background-color: var(--main-bg);
+  .calc-wrapper {
+    .top-section {
+      @include flexbox($alignItems: flex-end, $justifyContent: space-between);
+      color: var(--top-section-color);
+      .logo {
+        font-size: 32px;
+      }
+      .themes {
+        @include flexbox($alignItems: flex-end, $justifyContent: center);
+        gap: 1.5rem;
+        .themes-selection {
+          width: 75px;
+          .labels {
+            @include flexbox($justifyContent: space-around);
+            line-height: 1.8;
+            padding: 0 2px;
+            font-size: 12px;
+          }
+          .inputs {
+            @include flexbox($alignItems: center, $justifyContent: space-evenly);
+            position: relative;
+            height: 28px;
+            border-radius: 20px;
+            background-color: var(--inputs-bg-keypad-bg);
+            p {
+              position: absolute;
+              left: -75px;
+              letter-spacing: 1.5px;
+              font-size: 12px;
+            }
+            input {
+              appearance: none;
+              width: 1rem;
+              height: 1rem;
+              border-radius: 50%;
+              cursor: pointer;
+              &:checked {
+                background-color: var(--key-bg-toggle-two);
+              }
+            }
+          }
+        }
+      }
+    }
+    .output {
+      @include flexbox($alignItems: center, $justifyContent: flex-end);
+      border-radius: 12px;
+      margin: 2rem 0 1.5rem 0;
+      font-size: clamp(3.625rem, 3.4049rem + 0.939vw, 4.25rem);
+      padding: 2.25rem 2rem 1.75rem 2rem;
+      color: var(--top-section-color);
+      background-color: var(--output-bg);
+    }
+    .buttons {
+      border-radius: 12px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(25px, 100px));
+      grid-template-rows: repeat(5, minmax(25px, 60px));
+      gap: 1.5rem;
+      padding: 2rem;
+      background-color: var(--inputs-bg-keypad-bg);
+      button {
+        border-radius: 12px;
+        border: none;
+        cursor: pointer;
+        font-size: clamp(1.875rem, 1.743rem + 0.5634vw, 2.25rem);
+      }
+      button[data-number],
+      button[data-operator] {
+        color: var(--buttons);
+        background-color: var(--key-bg-three);
+        -webkit-box-shadow: 0px 4px 0px 0px var(--key-shadow-three);
+        -moz-box-shadow: 0px 4px 0px 0px var(--key-shadow-three);
+        box-shadow: 0px 4px 0px 0px var(--key-shadow-three);
+        &:hover {
+          background-color: var(--white);
+        }
+      }
+      button:not([data-number], [data-operator]) {
+        font-size: clamp(1.1875rem, 1.0775rem + 0.4695vw, 1.5rem);
+        color: var(--white);
+      }
+      button[data-delete],
+      button[data-reset] {
+        background-color: var(--key-bg-one);
+        -webkit-box-shadow: 0px 4px 0px 0px var(--key-shadow-one);
+        -moz-box-shadow: 0px 4px 0px 0px var(--key-shadow-one);
+        box-shadow: 0px 4px 0px 0px var(--key-shadow-one);
+      }
+      button[data-equals] {
+        color: var(--equals);
+        background-color: var(--key-bg-toggle-two);
+        -webkit-box-shadow: 0px 4px 0px 0px var(--key-shadow-two);
+        -moz-box-shadow: 0px 4px 0px 0px var(--key-shadow-two);
+        box-shadow: 0px 4px 0px 0px var(--key-shadow-two);
+      }
+      .span-two {
+        grid-column: span 2;
+        width: unset;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 600px) {
+  body {
     .calc-wrapper {
-        color: $white;
-        .top-section {
-            display: flex;
-            justify-content: space-between;
-            .logo {
-                font-size: 32px;
-            }
-            .themes {
-                >label {
-    
-                }
-                >input {
-    
-                }
-            }
+      .top-section {
+        .themes {
+          gap: 1.5rem;
         }
-        .output {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            border-radius: 12px;
-            margin: 2rem 0 1.5rem 0;
-            font-size: 68px;
-            color: $white;
-            padding: 2rem;
-            background-color: $very-dark-desaturated-blue-screen;
+      }
+      .output {
+        padding: 1.5rem 1.5rem 0.75rem 1.5rem;
+      }
+      .buttons {
+        gap: 1rem 0.75rem;
+        padding: 1.25rem;
+        button {
+          border-radius: 4px;
         }
-        .buttons {
-            border-radius: 12px;
-            display: grid;
-            grid-template-columns: repeat(4, minmax(25px,100px));
-            grid-template-rows: repeat(5, minmax(25px,55px));
-            gap: 1.5rem;
-            padding: 2rem;
-            background-color: $very-dark-desaturated;
-            >button {
-                border-radius: 12px;
-                border: none;
-                cursor: pointer;
-                font-size: 36px;
-            }
-            >button[data-number], button[data-operator] {
-                color: $very-dark-grayish-blue;
-                background-color: $light-grayish-orange-key;
-                -webkit-box-shadow: 0px 4px 0px 0px $grayish-orange-shadow;
-                -moz-box-shadow: 0px 4px 0px 0px $grayish-orange-shadow;
-                box-shadow: 0px 4px 0px 0px $grayish-orange-shadow;
-                &:hover {
-                    background-color: $white;
-                }
-            }
-            >button:not([data-number],[data-operator]) {
-                font-size: 24px;
-                color: $white;
-            }
-            >button[data-delete], button[data-reset] {
-                background-color: $desaturated-dark-blue-key;
-                -webkit-box-shadow: 0px 4px 0px 0px $desaturated-dark-blue-shadow;
-                -moz-box-shadow: 0px 4px 0px 0px $desaturated-dark-blue-shadow;
-                box-shadow: 0px 4px 0px 0px $desaturated-dark-blue-shadow;
-            }
-            >button[data-equals] {
-                background-color: $red-key-toggle;
-                -webkit-box-shadow: 0px 4px 0px 0px $dark-red-shadow;
-                -moz-box-shadow: 0px 4px 0px 0px $dark-red-shadow;
-                box-shadow: 0px 4px 0px 0px $dark-red-shadow;
-            }
-            .span-two {
-                grid-column: span 2;
-                width: unset;
-            }
-        }
+      }
     }
+  }
+}
