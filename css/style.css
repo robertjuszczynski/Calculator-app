@@ -70,6 +70,9 @@ body {
   padding: 1.5rem;
   background-color: var(--main-bg);
 }
+body .calc-wrapper {
+  max-width: 550px;
+}
 body .calc-wrapper .top-section {
   display: flex;
   flex-direction: row;
@@ -133,10 +136,12 @@ body .calc-wrapper .output {
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+  flex-wrap: nowrap;
   border-radius: 12px;
   margin: 2rem 0 1.5rem 0;
   font-size: clamp(3.625rem, 3.4049rem + 0.939vw, 4.25rem);
   padding: 2.25rem 2rem 1.75rem 2rem;
+  overflow: hidden;
   color: var(--top-section-color);
   background-color: var(--output-bg);
 }
@@ -155,33 +160,33 @@ body .calc-wrapper .buttons button {
   cursor: pointer;
   font-size: clamp(1.875rem, 1.743rem + 0.5634vw, 2.25rem);
 }
-body .calc-wrapper .buttons button[data-number],
-body .calc-wrapper .buttons button[data-operator] {
+body .calc-wrapper .buttons [data-number],
+body .calc-wrapper .buttons [data-operator] {
   color: var(--buttons);
   background-color: var(--key-bg-three);
   -webkit-box-shadow: 0px 4px 0px 0px var(--key-shadow-three);
   -moz-box-shadow: 0px 4px 0px 0px var(--key-shadow-three);
   box-shadow: 0px 4px 0px 0px var(--key-shadow-three);
 }
-body .calc-wrapper .buttons button[data-number]:hover,
-body .calc-wrapper .buttons button[data-operator]:hover {
+body .calc-wrapper .buttons [data-number]:hover,
+body .calc-wrapper .buttons [data-operator]:hover {
   background-color: var(--active-buttons-bg);
 }
-body .calc-wrapper .buttons button:not([data-number], [data-operator]) {
+body .calc-wrapper .buttons :not([data-number], [data-operator]) {
   font-size: clamp(1.1875rem, 1.0775rem + 0.4695vw, 1.5rem);
   color: var(--white);
 }
-body .calc-wrapper .buttons button:not([data-number], [data-operator]):hover {
+body .calc-wrapper .buttons :not([data-number], [data-operator]):hover {
   filter: brightness(1.5);
 }
-body .calc-wrapper .buttons button[data-delete],
-body .calc-wrapper .buttons button[data-reset] {
+body .calc-wrapper .buttons [data-delete],
+body .calc-wrapper .buttons [data-reset] {
   background-color: var(--key-bg-one);
   -webkit-box-shadow: 0px 4px 0px 0px var(--key-shadow-one);
   -moz-box-shadow: 0px 4px 0px 0px var(--key-shadow-one);
   box-shadow: 0px 4px 0px 0px var(--key-shadow-one);
 }
-body .calc-wrapper .buttons button[data-equals] {
+body .calc-wrapper .buttons [data-equals] {
   color: var(--equals);
   background-color: var(--key-bg-toggle-two);
   -webkit-box-shadow: 0px 4px 0px 0px var(--key-shadow-two);

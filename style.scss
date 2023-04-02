@@ -56,6 +56,7 @@ body {
   padding: 1.5rem;
   background-color: var(--main-bg);
   .calc-wrapper {
+    max-width: 550px;
     .top-section {
       @include flexbox($alignItems: flex-end, $justifyContent: space-between);
       color: var(--top-section-color);
@@ -104,13 +105,19 @@ body {
       }
     }
     .output {
-      @include flexbox($alignItems: center, $justifyContent: flex-end);
+      @include flexbox($alignItems: center, $justifyContent: flex-end, $wrap: nowrap);
       border-radius: 12px;
       margin: 2rem 0 1.5rem 0;
       font-size: clamp(3.625rem, 3.4049rem + 0.939vw, 4.25rem);
       padding: 2.25rem 2rem 1.75rem 2rem;
+      overflow: hidden;
       color: var(--top-section-color);
       background-color: var(--output-bg);
+      [data-current-operation] {
+
+      }
+      [data-previous-operation] {
+      }
     }
     .buttons {
       border-radius: 12px;
@@ -126,8 +133,8 @@ body {
         cursor: pointer;
         font-size: clamp(1.875rem, 1.743rem + 0.5634vw, 2.25rem);
       }
-      button[data-number],
-      button[data-operator] {
+      [data-number],
+      [data-operator] {
         color: var(--buttons);
         background-color: var(--key-bg-three);
         -webkit-box-shadow: 0px 4px 0px 0px var(--key-shadow-three);
@@ -137,21 +144,21 @@ body {
           background-color: var(--active-buttons-bg);
         }
       }
-      button:not([data-number], [data-operator]) {
+      :not([data-number], [data-operator]) {
         font-size: clamp(1.1875rem, 1.0775rem + 0.4695vw, 1.5rem);
         color: var(--white);
         &:hover {
           filter: brightness(1.5);
         }
       }
-      button[data-delete],
-      button[data-reset] {
+      [data-delete],
+      [data-reset] {
         background-color: var(--key-bg-one);
         -webkit-box-shadow: 0px 4px 0px 0px var(--key-shadow-one);
         -moz-box-shadow: 0px 4px 0px 0px var(--key-shadow-one);
         box-shadow: 0px 4px 0px 0px var(--key-shadow-one);
       }
-      button[data-equals] {
+      [data-equals] {
         color: var(--equals);
         background-color: var(--key-bg-toggle-two);
         -webkit-box-shadow: 0px 4px 0px 0px var(--key-shadow-two);
