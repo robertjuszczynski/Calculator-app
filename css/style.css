@@ -136,14 +136,28 @@ body .calc-wrapper .output {
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  flex-wrap: nowrap;
+  position: relative;
   border-radius: 12px;
   margin: 2rem 0 1.5rem 0;
-  font-size: clamp(3.625rem, 3.4049rem + 0.939vw, 4.25rem);
-  padding: 2.25rem 2rem 1.75rem 2rem;
   overflow: hidden;
+  font-size: clamp(2.875rem, 2.5669rem + 1.3146vw, 3.75rem);
+  padding: 2.5rem 2rem 1.5rem 2rem;
   color: var(--top-section-color);
   background-color: var(--output-bg);
+}
+body .calc-wrapper .output [data-current-operation] {
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
+  font-size: clamp(3rem, 2.7359rem + 1.1268vw, 3.75rem);
+}
+body .calc-wrapper .output [data-previous-operation] {
+  white-space: nowrap;
+  position: absolute;
+  overflow: hidden;
+  filter: opacity(0.5);
+  font-size: clamp(0.75rem, 0.618rem + 0.5634vw, 1.125rem);
+  top: 12.5%;
 }
 body .calc-wrapper .buttons {
   border-radius: 12px;

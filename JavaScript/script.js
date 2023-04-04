@@ -46,8 +46,8 @@ class calc {
     this.reset()
   }
   delete() {
-    if (!this.currentOperand.toString().slice(0, -1)) {
-      this.currentOperand = '0'
+    if (this.currentOperand == "Infinity" || !this.currentOperand.toString().slice(0, -1)) {
+      this.currentOperand = "0"
       return
     }
     this.currentOperand = this.currentOperand.slice(0, -1)
@@ -57,20 +57,33 @@ class calc {
     this.currentOperand = '0'
   }
   addNumber(number) {
-    if (number === '.' && this.currentOperand.includes('.')) return;
-    if (this.currentOperand === '0') this.currentOperand = '';
-    if ('+-x/'.includes(number) && '+-x/'.includes(this.currentOperand.slice(-1))) {
-      this.currentOperand = `${this.currentOperand.slice(0, -1)}${number}`;
-      return;
+    const operators = ['x','/','+','-']
+    if (!operators.includes(number) && operators.includes(this.currentOperand.slice(-1))) {
+      this.previousOperand = (this.previousOperand + this.currentOperand).replace(/x/g, '*')
+      this.currentOperand = number
+      return
     }
-    this.currentOperand += number;
+    if (this.currentOperand == 'Infinity') {
+      this.currentOperand = number
+    }
+    if (number === '.' && this.currentOperand.includes('.')) return
+    if (this.currentOperand === '0') this.currentOperand = ''
+    if (operators.includes(number) && operators.includes(this.currentOperand.slice(-1))) {
+      this.currentOperand = `${this.currentOperand.slice(0, -1)}${number}`
+      return
+    }
+    if (operators.includes(number) && this.currentOperand === '0') {
+      return
+    }
+    this.currentOperand += number
   }
   calculate() {
-    const result = eval(this.currentOperand.replace(/x/g, '*'));
-    this.previousOperand = this.currentOperand;
-    this.currentOperand = parseFloat(result.toFixed(10)).toString();
+    const result = eval(this.previousOperand.replace(/x/g, '*') + this.currentOperand.replace(/x/g, '*'));
+    this.previousOperand = ''
+    this.currentOperand = parseFloat(result.toFixed(10)).toString()
   }
   updateDisplay() {
+    this.previousOperationText.innerText = this.previousOperand
     this.currentOperationText.innerText = this.currentOperand
   }
 }
