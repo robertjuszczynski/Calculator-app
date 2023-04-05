@@ -46,7 +46,7 @@ class calc {
     this.reset()
   }
   delete() {
-    if (this.currentOperand == "Infinity" || !this.currentOperand.toString().slice(0, -1)) {
+    if (this.currentOperand == "Infinity" || this.currentOperand == "-Infinity" || this.currentOperand == "NaN" || !this.currentOperand.toString().slice(0, -1)) {
       this.currentOperand = "0"
       return
     }
@@ -63,16 +63,14 @@ class calc {
       this.currentOperand = number
       return
     }
-    if (this.currentOperand == 'Infinity') {
+    if (this.currentOperand == 'Infinity' || this.currentOperand == 'NaN' || this.currentOperand == '-Infinity') {
       this.currentOperand = number
-    }
-    if (number === '.' && this.currentOperand.includes('.')) return
-    if (this.currentOperand === '0') this.currentOperand = ''
-    if (operators.includes(number) && operators.includes(this.currentOperand.slice(-1))) {
-      this.currentOperand = `${this.currentOperand.slice(0, -1)}${number}`
       return
     }
-    if (operators.includes(number) && this.currentOperand === '0') {
+    if (number === '.' && this.currentOperand.includes('.')) return
+    if (this.currentOperand === '0' && !operators.includes(number)) this.currentOperand = ''
+    if (operators.includes(number) && operators.includes(this.currentOperand.slice(-1))) {
+      this.currentOperand = `${this.currentOperand.slice(0, -1)}${number}`
       return
     }
     this.currentOperand += number
