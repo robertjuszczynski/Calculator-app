@@ -155,7 +155,13 @@ body .calc-wrapper .output [data-previous-operation] {
   font-size: clamp(0.75rem, 0.618rem + 0.5634vw, 1.125rem);
   top: 12.5%;
 }
-body .calc-wrapper .buttons {
+body .calc-wrapper .buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+body .calc-wrapper .buttons-container .buttons {
   border-radius: 12px;
   display: grid;
   grid-template-columns: repeat(4, minmax(25px, 100px));
@@ -164,62 +170,65 @@ body .calc-wrapper .buttons {
   padding: 2rem;
   background-color: var(--inputs-bg-keypad-bg);
 }
-body .calc-wrapper .buttons button {
+body .calc-wrapper .buttons-container .buttons button {
   border-radius: 12px;
   border: none;
   cursor: pointer;
   font-size: clamp(1.875rem, 1.743rem + 0.5634vw, 2.25rem);
 }
-body .calc-wrapper .buttons [data-number],
-body .calc-wrapper .buttons [data-operator] {
+body .calc-wrapper .buttons-container .buttons [data-number],
+body .calc-wrapper .buttons-container .buttons [data-operator] {
   color: var(--buttons);
   background-color: var(--key-bg-three);
   -webkit-box-shadow: 0px 4px 0px 0px var(--key-shadow-three);
   -moz-box-shadow: 0px 4px 0px 0px var(--key-shadow-three);
   box-shadow: 0px 4px 0px 0px var(--key-shadow-three);
 }
-body .calc-wrapper .buttons [data-number]:hover,
-body .calc-wrapper .buttons [data-operator]:hover {
+body .calc-wrapper .buttons-container .buttons [data-number]:hover,
+body .calc-wrapper .buttons-container .buttons [data-operator]:hover {
   background-color: var(--active-buttons-bg);
 }
-body .calc-wrapper .buttons :not([data-number], [data-operator]) {
+body .calc-wrapper .buttons-container .buttons :not([data-number], [data-operator]) {
   font-size: clamp(1.1875rem, 1.0775rem + 0.4695vw, 1.5rem);
   color: var(--white);
 }
-body .calc-wrapper .buttons :not([data-number], [data-operator]):hover {
+body .calc-wrapper .buttons-container .buttons :not([data-number], [data-operator]):hover {
   filter: brightness(1.5);
 }
-body .calc-wrapper .buttons [data-delete],
-body .calc-wrapper .buttons [data-reset] {
+body .calc-wrapper .buttons-container .buttons [data-delete],
+body .calc-wrapper .buttons-container .buttons [data-reset] {
   background-color: var(--key-bg-one);
   -webkit-box-shadow: 0px 4px 0px 0px var(--key-shadow-one);
   -moz-box-shadow: 0px 4px 0px 0px var(--key-shadow-one);
   box-shadow: 0px 4px 0px 0px var(--key-shadow-one);
 }
-body .calc-wrapper .buttons [data-equals] {
+body .calc-wrapper .buttons-container .buttons [data-equals] {
   color: var(--equals);
   background-color: var(--key-bg-toggle-two);
   -webkit-box-shadow: 0px 4px 0px 0px var(--key-shadow-two);
   -moz-box-shadow: 0px 4px 0px 0px var(--key-shadow-two);
   box-shadow: 0px 4px 0px 0px var(--key-shadow-two);
 }
-body .calc-wrapper .buttons .span-two {
+body .calc-wrapper .buttons-container .buttons .span-two {
   grid-column: span 2;
   width: unset;
 }
 
 @media only screen and (max-width: 600px) {
+  body .calc-wrapper {
+    max-width: 100%;
+  }
   body .calc-wrapper .top-section .themes {
     gap: 1.5rem;
   }
   body .calc-wrapper .output {
     padding: 1.5rem 1.5rem 0.75rem 1.5rem;
   }
-  body .calc-wrapper .buttons {
+  body .calc-wrapper .buttons-container .buttons {
     gap: 1rem 0.75rem;
     padding: 1.25rem;
   }
-  body .calc-wrapper .buttons button {
+  body .calc-wrapper .buttons-container .buttons button {
     border-radius: 4px;
   }
 }/*# sourceMappingURL=style.css.map */

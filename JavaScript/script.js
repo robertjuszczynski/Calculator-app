@@ -114,17 +114,14 @@ equalsButton.addEventListener('click', () => {
 })
 
 
+const child = document.querySelector('[data-current-operation]'); // wybierz element dziecka
+const parent = document.querySelector('.output'); // pobierz rodzica elementu dziecka
 
+const childWidth = child.offsetWidth; // pobierz szerokość elementu dziecka
 
-
-
-
-
-
-
-
-
-
-
+if (childWidth > parent.offsetWidth) { // jeśli szerokość elementu dziecka przekracza szerokość jego rodzica
+  child.style.width = parent.offsetWidth + 'px'; // ustaw szerokość elementu dziecka na szerokość jego rodzica
+  child.style.overflow = 'hidden'; // ukryj zawartość, która wychodzi poza granice elementu dziecka
+}
 // Load theme on page load
 loadTheme();
